@@ -72,8 +72,8 @@ typedef void* (*GetApiFunction)(unsigned api);
 struct PluginApi128
 {
 #ifdef __cplusplus
-	uint32_t version = 128;
-	uint32_t flags = 1; //lua plugin
+	uint32_t version = 65;
+	uint32_t flags = 3; //lua plugin
 #else
 	uint32_t version;
 	uint32_t flags;
@@ -406,6 +406,18 @@ struct LuaApi128
 
 	/* Reserved for expansion of the API. */
 	void* reserved[32];
+};
+
+struct LoggingApi
+{
+	/* Logs an informational message */
+	void (*info)(const char* system, const char* info);
+
+	/* Logs a warning message. */
+	void (*warning)(const char* system, const char* warning);
+
+	/* Logs an error message. */
+	void (*error)(const char* system, const char* error);
 };
 
 #ifdef __cplusplus

@@ -150,6 +150,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -189,6 +190,23 @@
     <ClCompile Include="rawray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="discord_game_sdk\cpp\achievement_manager.h" />
+    <ClInclude Include="discord_game_sdk\cpp\activity_manager.h" />
+    <ClInclude Include="discord_game_sdk\cpp\application_manager.h" />
+    <ClInclude Include="discord_game_sdk\cpp\core.h" />
+    <ClInclude Include="discord_game_sdk\cpp\discord.h" />
+    <ClInclude Include="discord_game_sdk\cpp\event.h" />
+    <ClInclude Include="discord_game_sdk\cpp\ffi.h" />
+    <ClInclude Include="discord_game_sdk\cpp\image_manager.h" />
+    <ClInclude Include="discord_game_sdk\cpp\lobby_manager.h" />
+    <ClInclude Include="discord_game_sdk\cpp\network_manager.h" />
+    <ClInclude Include="discord_game_sdk\cpp\overlay_manager.h" />
+    <ClInclude Include="discord_game_sdk\cpp\relationship_manager.h" />
+    <ClInclude Include="discord_game_sdk\cpp\storage_manager.h" />
+    <ClInclude Include="discord_game_sdk\cpp\store_manager.h" />
+    <ClInclude Include="discord_game_sdk\cpp\types.h" />
+    <ClInclude Include="discord_game_sdk\cpp\user_manager.h" />
+    <ClInclude Include="discord_game_sdk\cpp\voice_manager.h" />
     <ClInclude Include="include\clue\log_conf.h" />
     <ClInclude Include="lfs\lfs.h" />
     <ClInclude Include="lua_helpers.h" />

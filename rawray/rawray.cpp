@@ -8,10 +8,12 @@
 
 #include "clue.hpp"
 
+
+
 static void setup_game(GetApiFunction get_engine_api)
 {
 	auto lua = (LuaApi128*)get_engine_api(LUA_API_ID);
-	rawray::lua::start_env(lua);
+
 }
 
 static const char* get_name()
@@ -29,7 +31,7 @@ static void loaded(GetApiFunction get_engine_api)
 
 static void update(float dt)
 {
-	rawray::lua::update(dt);
+	//rawray::lua::update(dt);
 }
 
 static void shutdown()
@@ -37,13 +39,15 @@ static void shutdown()
 #ifdef _DEBUG
 	MessageBoxA(NULL, "shutdown", "shutdown", 0);
 #endif
-	rawray::lua::unload();
+	//rawray::lua::unload();
 }
 
 extern "C" {
 	void* get_dynamic_plugin_api(unsigned api)
 	{
 		if (api == PLUGIN_API_ID) {
+
+			MessageBoxA(NULL, "creating plugin", "get_dynamic_plugin_api", 0);
 			static PluginApi128 api{};
 			api.get_name = get_name;
 			api.setup_game = setup_game;
@@ -58,6 +62,7 @@ extern "C" {
 #if !defined STATIC_PLUGIN_LINKING
 	PLUGIN_DLLEXPORT void* get_plugin_api(unsigned api)
 	{
+		MessageBoxA(NULL, "get_plugin_api", "get_plugin_api", 0);
 		return get_dynamic_plugin_api(api);
 	}
 #endif
