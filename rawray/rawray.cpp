@@ -8,11 +8,26 @@
 
 #include "clue.hpp"
 
+#include "discord_game_sdk/cpp/discord.h"
+
+
+discord::Core* core{};
 
 
 static void setup_game(GetApiFunction get_engine_api)
 {
 	auto lua = (LuaApi128*)get_engine_api(LUA_API_ID);
+
+	__int64 id = 1111429477055090698;
+	auto result = discord::Core::Create(id, DiscordCreateFlags_NoRequireDiscord, &core);
+	discord::Activity activity{};
+	activity.SetState("Testing");
+	activity.SetDetails("Fruit Loops");
+	core->ActivityManager().UpdateActivity(activity, [](discord::Result result) {
+
+	});
+
+MessageBoxA(NULL, "done discord stuff", "Loaded", 0);
 
 }
 
@@ -31,6 +46,8 @@ static void loaded(GetApiFunction get_engine_api)
 
 static void update(float dt)
 {
+
+	::core->RunCallbacks();
 	//rawray::lua::update(dt);
 }
 

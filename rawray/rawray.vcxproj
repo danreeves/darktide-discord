@@ -150,7 +150,8 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>discord_game_sdk.dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>discord_game_sdk.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -184,6 +185,20 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="discord_game_sdk\cpp\achievement_manager.cpp" />
+    <ClCompile Include="discord_game_sdk\cpp\activity_manager.cpp" />
+    <ClCompile Include="discord_game_sdk\cpp\application_manager.cpp" />
+    <ClCompile Include="discord_game_sdk\cpp\core.cpp" />
+    <ClCompile Include="discord_game_sdk\cpp\image_manager.cpp" />
+    <ClCompile Include="discord_game_sdk\cpp\lobby_manager.cpp" />
+    <ClCompile Include="discord_game_sdk\cpp\network_manager.cpp" />
+    <ClCompile Include="discord_game_sdk\cpp\overlay_manager.cpp" />
+    <ClCompile Include="discord_game_sdk\cpp\relationship_manager.cpp" />
+    <ClCompile Include="discord_game_sdk\cpp\storage_manager.cpp" />
+    <ClCompile Include="discord_game_sdk\cpp\store_manager.cpp" />
+    <ClCompile Include="discord_game_sdk\cpp\types.cpp" />
+    <ClCompile Include="discord_game_sdk\cpp\user_manager.cpp" />
+    <ClCompile Include="discord_game_sdk\cpp\voice_manager.cpp" />
     <ClCompile Include="lfs\lfs.c" />
     <ClCompile Include="lua_helpers.cpp" />
     <ClCompile Include="lua_linkage.cpp" />
