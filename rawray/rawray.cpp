@@ -21,8 +21,14 @@ static void setup_game(GetApiFunction get_engine_api)
 	__int64 id = 1111429477055090698;
 	auto result = discord::Core::Create(id, DiscordCreateFlags_NoRequireDiscord, &core);
 	discord::Activity activity{};
-	activity.SetState("Testing");
-	activity.SetDetails("Fruit Loops");
+	activity.SetState("In the Mourning Star");
+	activity.SetDetails("Modding");
+
+	activity.GetAssets().SetLargeImage("darktide");
+	activity.GetAssets().SetSmallImage("darktide");
+	//activity.GetAssets().SetLargeText("darktide");
+	//activity.GetAssets().SetSmallText("darktide");
+
 	core->ActivityManager().UpdateActivity(activity, [](discord::Result result) {
 
 	});
