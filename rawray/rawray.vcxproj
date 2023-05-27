@@ -178,6 +178,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <DelayLoadDLLs>discord_game_sdk.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+      <AdditionalDependencies>discord_game_sdk.dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -199,7 +201,6 @@
     <ClCompile Include="discord_game_sdk\cpp\types.cpp" />
     <ClCompile Include="discord_game_sdk\cpp\user_manager.cpp" />
     <ClCompile Include="discord_game_sdk\cpp\voice_manager.cpp" />
-    <ClCompile Include="lfs\lfs.c" />
     <ClCompile Include="lua_helpers.cpp" />
     <ClCompile Include="lua_linkage.cpp" />
     <ClCompile Include="rawray.cpp" />
@@ -223,7 +224,6 @@
     <ClInclude Include="discord_game_sdk\cpp\user_manager.h" />
     <ClInclude Include="discord_game_sdk\cpp\voice_manager.h" />
     <ClInclude Include="include\clue\log_conf.h" />
-    <ClInclude Include="lfs\lfs.h" />
     <ClInclude Include="lua_helpers.h" />
     <ClInclude Include="PluginApi128.h" />
   </ItemGroup>

@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\lfs">
-      <UniqueIdentifier>{50b64e4a-5b97-47eb-a88c-18b018029803}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\lfs">
-      <UniqueIdentifier>{00f662a1-00fb-4d53-ba1e-dae997c349d2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\lua">
       <UniqueIdentifier>{1b92340f-b729-459c-a9cb-149f7842117e}</UniqueIdentifier>
     </Filter>
@@ -28,13 +22,13 @@
     <Filter Include="Header Files\discord">
       <UniqueIdentifier>{f4b5e9cb-fb0a-4f9d-8809-ab42d5030b1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\discord">
+      <UniqueIdentifier>{25775cbe-38d5-4166-a08d-e8516b5439a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rawray.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lfs\lfs.c">
-      <Filter>Source Files\lfs</Filter>
     </ClCompile>
     <ClCompile Include="lua_linkage.cpp">
       <Filter>Source Files\lua</Filter>
@@ -43,54 +37,51 @@
       <Filter>Source Files\lua</Filter>
     </ClCompile>
     <ClCompile Include="discord_game_sdk\cpp\achievement_manager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\discord</Filter>
     </ClCompile>
     <ClCompile Include="discord_game_sdk\cpp\activity_manager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\discord</Filter>
     </ClCompile>
     <ClCompile Include="discord_game_sdk\cpp\application_manager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\discord</Filter>
     </ClCompile>
     <ClCompile Include="discord_game_sdk\cpp\core.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\discord</Filter>
     </ClCompile>
     <ClCompile Include="discord_game_sdk\cpp\image_manager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\discord</Filter>
     </ClCompile>
     <ClCompile Include="discord_game_sdk\cpp\lobby_manager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\discord</Filter>
     </ClCompile>
     <ClCompile Include="discord_game_sdk\cpp\network_manager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\discord</Filter>
     </ClCompile>
     <ClCompile Include="discord_game_sdk\cpp\overlay_manager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\discord</Filter>
     </ClCompile>
     <ClCompile Include="discord_game_sdk\cpp\relationship_manager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\discord</Filter>
     </ClCompile>
     <ClCompile Include="discord_game_sdk\cpp\storage_manager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\discord</Filter>
     </ClCompile>
     <ClCompile Include="discord_game_sdk\cpp\store_manager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\discord</Filter>
     </ClCompile>
     <ClCompile Include="discord_game_sdk\cpp\types.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\discord</Filter>
     </ClCompile>
     <ClCompile Include="discord_game_sdk\cpp\user_manager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\discord</Filter>
     </ClCompile>
     <ClCompile Include="discord_game_sdk\cpp\voice_manager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\discord</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PluginApi128.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="lfs\lfs.h">
-      <Filter>Header Files\lfs</Filter>
     </ClInclude>
     <ClInclude Include="lua_helpers.h">
       <Filter>Header Files\lua</Filter>

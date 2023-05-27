@@ -194,6 +194,8 @@ struct LuaApi128
 			(void*)nullptr); */
 	void (*add_console_command)(const char* command, lua_CFunction f, const char* desc, ...);
 
+
+
 	/* -----------------------------------------------------------------------
 		Lua standard functions
 
@@ -216,6 +218,9 @@ struct LuaApi128
 	int   (*checkstack) (lua_State* L, int sz);
 	void  (*xmove) (lua_State* from, lua_State* to, int n);
 
+
+	const void* (*fnx1) (lua_State* L, int idx);
+
 	/* Access functions */
 	int             (*isnumber) (lua_State* L, int idx);
 	int             (*isstring) (lua_State* L, int idx);
@@ -228,6 +233,8 @@ struct LuaApi128
 	int            (*rawequal) (lua_State* L, int idx1, int idx2);
 	int            (*lessthan) (lua_State* L, int idx1, int idx2);
 
+
+
 	lua_Number(*tonumber) (lua_State* L, int idx);
 	lua_Integer(*tointeger) (lua_State* L, int idx);
 	int             (*toboolean) (lua_State* L, int idx);
@@ -237,6 +244,8 @@ struct LuaApi128
 	void* (*touserdata) (lua_State* L, int idx);
 	lua_State* (*tothread) (lua_State* L, int idx);
 	const void* (*topointer) (lua_State* L, int idx);
+
+	const void* (*fnx2) (lua_State* L, int idx);
 
 	/* Push functions */
 	void  (*pushnil) (lua_State* L);
@@ -301,6 +310,8 @@ struct LuaApi128
 	lua_Hook(*gethook) (lua_State* L);
 	int (*gethookmask) (lua_State* L);
 	int (*gethookcount) (lua_State* L);
+
+	//int (*fnx3) (lua_State* L);
 
 	/* Library functions */
 	void (*lib_openlib) (lua_State* L, const char* libname, const luaL_Reg* l, int nup);
