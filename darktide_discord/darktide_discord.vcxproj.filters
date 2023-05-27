@@ -27,7 +27,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="rawray.cpp">
+    <ClCompile Include="darktide_discord.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="lua_linkage.cpp">
