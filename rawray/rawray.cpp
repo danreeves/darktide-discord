@@ -23,7 +23,6 @@ static int set_state(lua_State* L)
 	if (lua->isstring(L, 1)) {
 		const char* value = lua->tolstring(L, 1, nullptr);
 		activity.SetState(value);
-		core->ActivityManager().UpdateActivity(activity, [](discord::Result result) {});
 		lua->pushboolean(L, 1); // success
 	} else {
 		lua->pushboolean(L, 0); // error
@@ -36,7 +35,6 @@ static int set_details(lua_State* L)
 	if (lua->isstring(L, 1)) {
 		const char* value = lua->tolstring(L, 1, nullptr);
 		activity.SetDetails(value);
-		core->ActivityManager().UpdateActivity(activity, [](discord::Result result) {});
 		lua->pushboolean(L, 1); // success
 	}
 	else {
@@ -52,7 +50,6 @@ static int set_class(lua_State* L)
 		const char* details = lua->tolstring(L, 2, nullptr);
 		activity.GetAssets().SetSmallImage(archetype);
 		activity.GetAssets().SetSmallText(details);
-		core->ActivityManager().UpdateActivity(activity, [](discord::Result result) {});
 		lua->pushboolean(L, 1); // success
 	}
 	else {
@@ -63,11 +60,11 @@ static int set_class(lua_State* L)
 
 static int set_party_size(lua_State* L)
 {
-	if (lua->isnumber(L, 1)) {
+	if (lua->isnumber(L, 1) && lua->isnumber(L, 2)) {
 		int current_size = lua->tonumber(L, 1);
+		int max_size = lua->tonumber(L, 2);
 		activity.GetParty().GetSize().SetCurrentSize(current_size);
-		activity.GetParty().GetSize().SetMaxSize(4);
-		core->ActivityManager().UpdateActivity(activity, [](discord::Result result) {});
+		activity.GetParty().GetSize().SetMaxSize(max_size);
 		lua->pushboolean(L, 1); // success
 	}
 	else {
@@ -81,9 +78,25 @@ static int set_start_time(lua_State* L)
 
 	std::time_t result = std::time(nullptr);
 	activity.GetTimestamps().SetStart(result);
-	core->ActivityManager().UpdateActivity(activity, [](discord::Result result) {});
 	lua->pushboolean(L, 1); // success
 	return 1;  /* number of results */
+}
+
+static void update() 
+{
+	core->ActivityManager().UpdateActivity(activity, [](discord::Result result) {
+		if (result != discord::Result::Ok) {
+			char message[255] = "";
+			sprintf_s(message, "non-zero update result: %d", result);
+			logger->info("DarktideDiscord", message);
+		}
+	});
+}
+
+static int lua_update(lua_State* L)
+{
+	update();
+	return 0;
 }
 
 static void setup_game(GetApiFunction get_engine_api)
@@ -98,19 +111,12 @@ static void setup_game(GetApiFunction get_engine_api)
 	lua->add_module_function("DarktideDiscord", "set_class", set_class);
 	lua->add_module_function("DarktideDiscord", "set_party_size", set_party_size);
 	lua->add_module_function("DarktideDiscord", "set_start_time", set_start_time);
+	lua->add_module_function("DarktideDiscord", "update", lua_update);
 
 	__int64 id = 1111429477055090698;
 	auto result = discord::Core::Create(id, DiscordCreateFlags_NoRequireDiscord, &core);
-	activity.SetState("In the Mourning Star");
-	activity.SetDetails("Modding");
-
 	activity.GetAssets().SetLargeImage("darktide");
-	activity.GetAssets().SetSmallImage("psyker");
-	//activity.GetAssets().SetLargeText("darktide");
-	activity.GetAssets().SetSmallText("Psyker Level 30");
-
-	core->ActivityManager().UpdateActivity(activity, [](discord::Result result) {
-	});
+	update();
 
 #ifdef _DEBUG
 	MessageBoxA(NULL, "done discord stuff", "Loaded", 0);
