@@ -1,34 +1,46 @@
-# RawRay
-[![MSBuild](https://github.com/thewhitegoatcb/rawray/actions/workflows/msbuild.yml/badge.svg?branch=master)](https://github.com/thewhitegoatcb/rawray/actions/workflows/msbuild.yml)
+# Darktide Discord Rich Presence
 
-RawRay is a Stingray engine plugin that enables the execution of external Lua scripts before the game boots, without modifying game bundle files.
+Uses the Stingray Plugin API to integrate the Discord Game SDK into Darktide.
 
-## Features
-* Integrates [LFS](https://github.com/lunarmodules/luafilesystem)
-* `rr.msgbox(msg, title)` function to display popup messages
-* `rr.raw_dofile(path)` function to execute Lua files outside of the bundle
-* `rr.openlibs()` function to reload libraries (used by the overrider)
-* Offers an independent logging library with `rr.log_info(msg)`, `rr.log_warning(msg)`, `rr.log_error(msg)`, and `rr.log_debug(msg)` functions
+Credit to [thewhitegoatcb](https://github.com/thewhitegoatcb/rawray) for reverse engineering the Vermintide 2 Plugin API.
 
-## Provided Addons
-* Overrider
-
-Allows overriding bundled compiled files with uncompiled Lua files on disk.
-
-__Usage:__ Place the file you want to override in the overrides folder.
-
-__Lua API changes:__ `require`, `dofile`, and `loadfile` now accept a path with a prefix of `@` or `#`, where:
-  * `@` - forces loading the original file
-  * `#` - forces loading the override file (even if it doesn't exist)
-  * (no prefix) - checks if an override exists, executes it if found, or proceeds with the bundled version
-
-An example of an override can be seen in [boot.lua](rawray_lua/rawray/overrides/scripts/boot_init.lua).
-
-## Configuration
-The configuration can be found in [config.lua](rawray_lua/rawray/config.lua).
+<center>
+	<img src="./assets/Screenshot1.png" />
+</center>
 
 ## Installation
-To install RawRay, extract the [Installation files](https://github.com/thewhitegoatcb/rawray/releases/latest) into the game's root directory.
 
-## Supported Games
-* Warhammer: Vermintide 2 (Modded Realm only)
+Place `darktide_discord_pluginw64.dll` in the `[game install]/binaries/plugins/` directory.
+
+## Building
+
+```
+make
+```
+
+## API
+
+The plugin exposes a Lua API for mods to use.
+
+```lua
+-- The version of the Darktide Discord plugin binary
+DarktideDiscord.VERSION: number
+
+-- Set the player's current party status
+DarktideDiscord.set_state(state: string)
+
+-- Set what the player is currently doing
+DarktideDiscord.set_details(details: string)
+
+-- Set the players current career archetype and details
+DarktideDiscord.set_class(class: string, details: string)
+
+-- Set the number of players in the current party
+DarktideDiscord.set_party_size(size: number)
+
+-- Reset the gameplay timer to 0
+DarktideDiscord.set_start_time()
+
+-- Call this in the game looop
+DarktideDiscord.update();
+```

@@ -1,15 +1,15 @@
-#include "lua.hpp"
-#include "lua_helpers.h"
+// #include "lua/lua.hpp"
+// #include "lua_helpers.h"
 
-#ifdef _WIN32
-#include <Windows.h>
-#endif // _WIN32
+// #ifdef _WIN32
+// #include <Windows.h>
+// #endif // _WIN32
 
-//#include "lfs/lfs.h"
-#include "clue.hpp"
+// #include "lfs/lfs.h"
+// #include "clue/clue.hpp"
 
 //
-//namespace rawray::lua
+// namespace rawray::lua
 //{
 //	static int _openlibs(lua_State* L)
 //	{
@@ -18,7 +18,7 @@
 //		return 0;
 //	}
 //
-//#ifdef _WIN32
+// #ifdef _WIN32
 //	static int _msgbox(lua_State* L)
 //	{
 //		const char* msg = luaL_checklstring(L, 1, nullptr);
@@ -26,7 +26,7 @@
 //		::MessageBoxA(nullptr, msg, title, 0);
 //		return 0;
 //	}
-//#endif // _WIN32
+// #endif // _WIN32
 //
 //	static int _raw_dofile(lua_State* L)
 //	{
@@ -125,7 +125,7 @@
 //		LOG_INFO("Registering lua env");
 //		G::_lua = lua;
 //		lua_State* L = lua->getscriptenvironmentstate();
-//		
+//
 //		const luaL_Reg reg[]{
 //			{"raw_dofile", _raw_dofile},
 //			{"openlibs", _openlibs},
@@ -136,7 +136,7 @@
 //			#ifdef _WIN32
 //			{"msgbox", _msgbox},
 //			#endif // _WIN32
-//			{nullptr, nullptr} 
+//			{nullptr, nullptr}
 //		};
 //		luaL_register(L, "rr", reg);
 //
@@ -162,9 +162,9 @@
 //		{
 //			auto error = lua_tolstring(L, -1, nullptr);
 //			LOG_ERROR("Error in pre_load.lua : " << error);
-//#ifdef _WIN32
+// #ifdef _WIN32
 //			::MessageBoxA(nullptr, error, "RawRay Lua Error!", 0);
-//#endif // _WIN32
+// #endif // _WIN32
 //		}
 //	}
 //}
