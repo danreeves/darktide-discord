@@ -4,9 +4,9 @@ Uses the Stingray Plugin API to integrate the Discord Game SDK into Darktide.
 
 Credit to [thewhitegoatcb](https://github.com/thewhitegoatcb/rawray) for reverse engineering the Vermintide 2 Plugin API.
 
-<center>
-	<img src="./assets/Screenshot1.png" />
-</center>
+<p align="center">
+	<img src="./assets/Screenshot1.png" style="border-radius: 4px;"/>
+</p>
 
 ## Installation
 
