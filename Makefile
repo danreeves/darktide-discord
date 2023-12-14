@@ -16,9 +16,9 @@ LDLIBS = -ldiscord_game_sdk
 TARGET = darktide_discord_pluginw64.dll
 
 # Source file
-SRC = darktide_discord/darktide_discord.cpp
+SRC = src/darktide_discord.cpp
 
-LIBFILES=$(wildcard darktide_discord/discord/*.cpp)
+LIBFILES=$(wildcard src/discord/*.cpp)
 
 all: $(TARGET)
 
