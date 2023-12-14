@@ -1,16 +1,11 @@
+#include <ctime>
+#include <sstream>
+
 #include "lua.h"
 #include "PluginApi128.h"
-// #include "lua_helpers.h"
-
-#ifdef _DEBUG
-#include <Windows.h>
-#endif
-
-#include "clue/clue.hpp"
-
 #include "discord/discord.h"
 
-#include <sstream>
+// #include <Windows.h>
 
 discord::Core *core{};
 discord::Activity activity{};
@@ -30,7 +25,7 @@ static int set_state(lua_State *L)
 	{
 		lua->pushboolean(L, 0); // error
 	}
-	return 1; /* number of results */
+	return 1;
 }
 
 static int set_details(lua_State *L)
@@ -45,7 +40,7 @@ static int set_details(lua_State *L)
 	{
 		lua->pushboolean(L, 0); // error
 	}
-	return 1; /* number of results */
+	return 1;
 }
 
 static int set_class(lua_State *L)
@@ -62,7 +57,7 @@ static int set_class(lua_State *L)
 	{
 		lua->pushboolean(L, 0); // error
 	}
-	return 1; /* number of results */
+	return 1;
 }
 
 static int set_party_size(lua_State *L)
@@ -79,16 +74,16 @@ static int set_party_size(lua_State *L)
 	{
 		lua->pushboolean(L, 0); // error
 	}
-	return 1; /* number of results */
+	return 1;
 }
 
 static int set_start_time(lua_State *L)
 {
 
-	std::time_t result = std::time(nullptr);
+	time_t result = time(nullptr);
 	activity.GetTimestamps().SetStart(result);
 	lua->pushboolean(L, 1); // success
-	return 1;				/* number of results */
+	return 1;
 }
 
 static void update()
@@ -126,37 +121,27 @@ static void setup_game(GetApiFunction get_engine_api)
 	activity.GetAssets().SetLargeImage("darktide");
 	update();
 
-#ifdef _DEBUG
-	MessageBoxA(NULL, "done discord stuff", "Loaded", 0);
-#endif
+	// MessageBoxA(NULL, "done discord stuff", "Loaded", 0);
 }
 
 static const char *get_name()
 {
-	return "rawray";
+	return "DarktideDiscord";
 }
 
 static void loaded(GetApiFunction get_engine_api)
 {
-	LOG_INFO("------Loaded RawRay-------");
-#ifdef _DEBUG
-	MessageBoxA(NULL, "Loaded", "Loaded", 0);
-#endif
+	// MessageBoxA(NULL, "Loaded", "Loaded", 0);
 }
 
 static void update(float dt)
 {
-
 	::core->RunCallbacks();
-	// rawray::lua::update(dt);
 }
 
 static void shutdown()
 {
-#ifdef _DEBUG
 	// MessageBoxA(NULL, "shutdown", "shutdown", 0);
-#endif
-	// rawray::lua::unload();
 }
 
 extern "C"
