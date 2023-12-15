@@ -26,4 +26,4 @@ $(TARGET): $(SRC)
 	$(CXX) $(CXXFLAGS) $(LIBFILES) $(LDFLAGS) $(LDLIBS) -o $(TARGET) $(SRC)
 
 clean:
-	rm -f $(TARGET)
+	del /F /Q "$(TARGET)"
