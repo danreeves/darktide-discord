@@ -18,6 +18,16 @@ Place `darktide_discord_pluginw64.dll` in the `[game install]/binaries/plugins/`
 make
 ```
 
+Compiled with
+
+```
+g++.exe (GCC) 4.8.3
+Copyright (C) 2013 Free Software Foundation, Inc.
+
+GNU ld (GNU Binutils) 2.24
+Copyright 2013 Free Software Foundation, Inc.
+```
+
 ## API
 
 The plugin exposes a Lua API for mods to use.
