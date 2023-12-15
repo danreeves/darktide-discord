@@ -4,7 +4,7 @@
 CXX = g++
 
 # Compiler flags
-CXXFLAGS = -Wall -Wextra -std=c++11 -shared -Os
+CXXFLAGS = -Wall -Wextra -std=c++11 -shared -Os -I./src/lua -I./src/discord
 
 # Linker flags
 LDFLAGS = -L./discord
@@ -23,7 +23,7 @@ LIBFILES=$(wildcard src/discord/*.cpp)
 all: $(TARGET)
 
 $(TARGET): $(SRC)
-	$(CXX) $(CXXFLAGS) $(LIBFILES) $(LDFLAGS) $(LDLIBS) -o $(TARGET) $(SRC)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(LDLIBS) -o $(TARGET) $(LIBFILES) $(SRC)
 
 clean:
 	del /F /Q "$(TARGET)"
